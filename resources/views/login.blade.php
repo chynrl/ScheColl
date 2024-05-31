@@ -10,8 +10,15 @@
 <body>
     <div class="container"><br>
         <div class="col-md-4 col-md-offset-4">
-            <h2 class="text-center"><b>SCHECOLL</b><br>SCHEDULE COLLEGE</h3>
+            <h2 class="text-center"><b>SCHECOLL</b><br>SCHEDULE OF COLLEGE</h3>
             <hr>
+            {{-- pemberitahuan keberhasilan log in --}}
+            @if(session('message'))
+            <div class="alert alert-success">
+                {{session('message')}}
+            </div>
+            @endif
+            
             @if(session('error'))
             <div class="alert alert-danger">
                 <b>Opps!</b> {{session('error')}}
@@ -19,6 +26,7 @@
             @endif
             <form action="{{ route('actionlogin') }}" method="post">
             @csrf
+                {{-- form pengisian login --}}
                 <div class="form-group">
                     <label>Email</label>
                     <input type="email" name="email" class="form-control" placeholder="Email" required="">
@@ -29,7 +37,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Log In</button>
                 <hr>
-                <p class="text-center">Belum punya akun? <a href="#">Register</a> sekarang!</p>
+                <p class="text-center">Belum punya akun? <a href="{{route('register')}}">Register</a> sekarang!</p>
             </form>
         </div>
     </div>

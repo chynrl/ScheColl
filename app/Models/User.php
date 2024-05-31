@@ -12,7 +12,12 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $table = 'users';
-    protected $primaryKey = 'id_user';
+    protected $primaryKey = 'id';
+    // data yang dapat diisi
+    protected $fillable = ['name','password','role','email'];
 
-    protected $fillable = ['username','password','role','email','verify_key','active'];
+    // pengecekan role admin
+    public function isAdmin() {
+        return $this->role == 'Admin';
+    }
 }
