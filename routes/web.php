@@ -18,7 +18,7 @@ use App\Models\Matkul;
 |
 */
 //Login
-Route::get('', [LoginController::class, 'login'])->name('login');
+Route::get('login', [LoginController::class, 'login'])->name('login');
 Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
 
 Route::get('home', [HomeController::class, 'index'])->name('home')->middleware('auth');
